@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 960px;
+            height: 150px;
+            margin: auto;
+            line-height: 1000px;
+
+        }
+
+        .box {
+            display: inline-block;
+            width: 150px;
+            height: 150px;
+            margin: 1px;
+            background: linear-gradient(90deg, rgb(234, 224, 224), white);
+            border-radius: 15px;
+            border: 2px solid #000;
+            box-shadow: 2px 2px 5px #000;
+            position: relative;
+
+        }
+
+        .dot_r {
+            line-height: 150px;
+            background: red;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .dot_b {
+            line-height: 150px;
+            background: black;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .lu {
+            position: absolute;
+            top: 8%;
+            left: 10%;
+        }
+
+        .ld {
+            position: absolute;
+            top: 75%;
+            left: 75%;
+        }
+
+        .ru {
+            position: absolute;
+            top: 8%;
+            left: 75%;
+        }
+
+        .rd {
+            position: absolute;
+            top: 75%;
+            left: 10%;
+        }
+
+        .cl {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            transform: translateY(-50%);
+        }
+
+        .cr {
+
+            position: absolute;
+            top: 50%;
+            left: 75%;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <span class="dot_r center"></span>
+        </div>
+        <div class="box">
+            <span class="dot_b lu"></span>
+            <span class="dot_b ld"></span>
+        </div>
+        <div class="box">
+            <span class="dot_b lu"></span>
+            <span class="dot_b ld"></span>
+            <span class="dot_b center"></span>
+        </div>
+        <div class="box">
+            <span class="dot_r lu"></span>
+            <span class="dot_r ld"></span>
+            <span class="dot_r ru"></span>
+            <span class="dot_r rd"></span>
+        </div>
+        <div class="box">
+            <span class="dot_b lu"></span>
+            <span class="dot_b ld"></span>
+            <span class="dot_b center"></span>
+            <span class="dot_b ru"></span>
+            <span class="dot_b rd"></span>
+        </div>
+        <div class="box">
+            <span class="dot_b lu"></span>
+            <span class="dot_b ld"></span>
+            <span class="dot_b rd"></span>
+            <span class="dot_b ru"></span>
+            <span class="dot_b cr"></span>
+            <span class="dot_b cl"></span>
+        </div>
+    </div>
+</body>
+
+</html>
