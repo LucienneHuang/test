@@ -1,41 +1,29 @@
-# https://github.com/actions/deploy-pages#usage
-name: Deploy to GitHub Pages
+# Action 名稱
+name: Deploy
+# 觸發時機，當推送到分支 master 時
 on:
-  workflow_dispatch:
   push:
-    branches:
-      - main
+    branches: [ main ]
+# 執行的工作
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - run: corepack enable
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-      # Pick your own package manager and build script
-      - run: npm install
-      - run: NUXT_APP_BASE_URL=/test/ npx nuxt build --preset github_pages
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./.output/public
-  # Deployment job
+  # 工作名稱
   deploy:
-    # Add a dependency to the build job
-    needs: build
-    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
-    permissions:
-      pages: write      # to deploy to Pages
-      id-token: write   # to verify the deployment originates from an appropriate source
-    # Deploy to the github_pages environment
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    # Specify runner + deployment step
+    # 執行工作的虛擬機作業系統
     runs-on: ubuntu-latest
+    # 工作步驟
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      # 步驟一：複製程式碼
+      - name: checkout
+        # 使用的 actions/checkout 複製程式碼
+        uses: actions/checkout@v3
+      # 步驟二：編譯
+      - name: Install and Build
+        run: |
+          npm install
+          npm run generate
+      # 步驟三：部署
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: .output/public
